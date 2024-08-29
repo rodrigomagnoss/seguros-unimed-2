@@ -9,9 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
@@ -517,63 +515,4 @@ public class GcGeralUtil {
 		return obj;
 	}
 
-	/**
-	 * Converter uma string de tempo passado no formato hh:mm[:ss] para uma expressão CRON 
-	 * @param tempo No formato hh:mm:ss ou hh:mm
-	 * @return O tempo na expressão CRON
-	 */
-	public static String convertToCron(String tempo) {
-
-	      // Dividir a string de tempo no formato HH:mm:ss ou HH:mm
-        String[] parts = tempo.split(":");
-
-        // Verificar se a entrada é válida
-        if (parts.length < 2 || parts.length > 3) {
-            throw new IllegalArgumentException("O formato de tempo deve ser HH:mm ou HH:mm:ss");
-        }
-
-        // Extrair hora e minuto
-        String hour = parts[0];
-        String minute = parts[1];
-        String second = parts.length == 3 ? parts[2] : "00";  // Padrão para 00 segundos
-
-        // Verificar se a hora, minuto e segundo são válidos
-        int hourInt = Integer.parseInt(hour);
-        int minuteInt = Integer.parseInt(minute);
-        int secondInt = Integer.parseInt(second);
-
-        if (hourInt < 0 || hourInt > 23 || minuteInt < 0 || minuteInt > 59 || secondInt < 0 || secondInt > 59) {
-            throw new IllegalArgumentException("Hora, minuto ou segundo inválido");
-        }
-
-        // Retornar a expressão cron correspondente
-        return String.format("%s %s %s * * *", second, minute, hour);
-        
-    }
-
-	
-	/**
-	 * Converter o valor em milisegundos de uma data para converter somente o tempo em uma expressão CRON 
-	 * @param millis Data em milisegundos
-	 * @return Somente o tempo tempo na expressão CRON
-	 */
-	 public static String convertMillisToCron(long millis) {
-	        // Criar uma data a partir dos milissegundos
-	        Date date = new Date(millis);
-
-	        // Formatar a data para extrair o horário no formato HH:mm:ss
-	        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-	        String formattedTime = sdf.format(date);
-
-	        // Dividir a string de tempo no formato HH:mm:ss
-	        String[] parts = formattedTime.split(":");
-
-	        // Extrair hora, minuto e segundo
-	        String hour = parts[0];
-	        String minute = parts[1];
-	        String second = parts[2];
-
-	        // Retornar a expressão cron correspondente
-	        return String.format("%s %s %s * * *", second, minute, hour);
-	    }
 }

@@ -16,16 +16,16 @@ import lombok.Setter;
 @Setter
 public class AuditEntity {
 
-    @Column(name = "criado_em")
+    @Column(name = "dt_criado_em")
     private LocalDateTime criadoEm;
 
-    @Column(name = "criado_por")
+    @Column(name = "nome_criado_por")
     private String criadoPor;
-
-    @Column(name = "atualizado_em")
+    
+    @Column(name = "dt_atualizado_em")
     private LocalDateTime atualizadoEm;
-
-    @Column(name = "atualizado_por")
+    
+    @Column(name = "nome_atualizado_por")
     private String atualizadoPor;
 
     //Getters and setters omitted for brevity

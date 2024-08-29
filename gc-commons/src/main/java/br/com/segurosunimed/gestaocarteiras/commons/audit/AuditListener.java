@@ -10,8 +10,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 public class AuditListener {
-
-	
 	
     @PrePersist
     public void setCreatedOn(Auditable auditable) {

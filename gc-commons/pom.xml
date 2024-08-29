@@ -20,7 +20,7 @@
 	</parent>
 -->
    
-    <groupId>br.com.unimed</groupId>
+    <groupId>br.com.segurosunimed</groupId>
     <artifactId>gc-commons</artifactId>
     <version>${commons.version}</version>
     <description>Módulo de estruturas comuns de reuso do Projeto Gestão de Carteiras</description>
@@ -28,9 +28,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-
-        <commons.version>1.0.2</commons.version>
-
+        <commons.version>1.0.3</commons.version>
     </properties>
 
     <dependencies>
